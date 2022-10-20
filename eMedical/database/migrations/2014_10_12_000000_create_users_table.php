@@ -25,8 +25,8 @@ class CreateUsersTable extends Migration
         Schema::create('patients', function (Blueprint $table) {
             $table->string('email')->unique();
             $table->foreign('email')->references('email')->on('users');
-            $table->string('id_number',10)->unique(); #12345678Z ó Z12345678A
-            $table->string('healthcara_number',10)->unique();
+            $table->string('id',10)->unique(); #12345678Z ó Z12345678A
+            $table->string('healthcare_number',10)->unique();
             $table->dateTime('birthday');
             $table->string('occupation');
             $table->string('address');
