@@ -16,14 +16,14 @@ use App\Http\Controllers\PatientsController;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return redirect('home');
 });
 
 Route::get('/home', function () {
     return view('dashboard');
-})->middleware(['auth'])->name('dashboard');
+})->middleware(['auth','verified'])->name('dashboard');
 
 
-Route::resource('patients', PatientsController::class)->middleware('auth');
+Route::resource('patients', PatientsController::class)->middleware('auth','verified');
 
 require __DIR__.'/auth.php';
