@@ -26,7 +26,7 @@
                         </div>
                         <div class="form-group">
                             <strong>Id Number:</strong>
-                            {{ $patient->id_number }}
+                            {{ $patient->id }}
                         </div>
                         <div class="form-group">
                             <strong>Healthcare Number:</strong>

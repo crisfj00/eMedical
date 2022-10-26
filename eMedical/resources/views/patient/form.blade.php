@@ -7,9 +7,9 @@
             {!! $errors->first('email', '<div class="invalid-feedback">:message</div>') !!}
         </div>
         <div class="form-group">
-            {{ Form::label('id_number') }}
-            {{ Form::text('id_number', $patient->id_number, ['class' => 'form-control' . ($errors->has('id_number') ? ' is-invalid' : ''), 'placeholder' => 'Id Number']) }}
-            {!! $errors->first('id_number', '<div class="invalid-feedback">:message</div>') !!}
+            {{ Form::label('id') }}
+            {{ Form::text('id', $patient->id, ['class' => 'form-control' . ($errors->has('id') ? ' is-invalid' : ''), 'placeholder' => 'Id Number']) }}
+            {!! $errors->first('id', '<div class="invalid-feedback">:message</div>') !!}
         </div>
         <div class="form-group">
             {{ Form::label('healthcare_number') }}

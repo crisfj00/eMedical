@@ -24,6 +24,6 @@ Route::get('/home', function () {
 })->middleware(['auth','verified'])->name('dashboard');
 
 
-Route::resource('patients', PatientsController::class)->middleware('auth','verified');
+Route::resource('patients', PatientsController::class)->middleware('role:admin','verified');
 
 require __DIR__.'/auth.php';

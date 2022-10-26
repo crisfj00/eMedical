@@ -59,7 +59,7 @@ class PatientsController extends Controller
      */
     public function show($id)
     {
-        $patient = Patient::find($id);
+        $patient = Patient::where('id',$id)->get()->first();
 
         return view('patient.show', compact('patient'));
     }
@@ -72,7 +72,7 @@ class PatientsController extends Controller
      */
     public function edit($id)
     {
-        $patient = Patient::find($id);
+        $patient = Patient::where('id',$id)->get()->first();
 
         return view('patient.edit', compact('patient'));
     }
@@ -101,7 +101,8 @@ class PatientsController extends Controller
      */
     public function destroy($id)
     {
-        $patient = Patient::find($id)->delete();
+        $patient = Patient::where('id',$id)->get()->first()->delete();
+
 
         return redirect()->route('patients.index')
             ->with('success', 'Patient deleted successfully');

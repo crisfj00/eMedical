@@ -53,7 +53,7 @@
                                             <td>{{ ++$i }}</td>
                                             
 											<td>{{ $patient->email }}</td>
-											<td>{{ $patient->id_number }}</td>
+											<td>{{ $patient->id }}</td>
 											<td>{{ $patient->healthcare_number }}</td>
 											<td>{{ $patient->birthday }}</td>
 											<td>{{ $patient->occupation }}</td>
