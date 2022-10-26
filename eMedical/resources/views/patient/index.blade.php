@@ -61,13 +61,7 @@
 											<td>{{ $patient->phone_number }}</td>
 
                                             <td>
-                                                <form action="{{ route('patients.destroy',$patient->id) }}" method="POST">
                                                     <a class="btn btn-sm btn-primary " href="{{ route('patients.show',$patient->id) }}"><i class="fa fa-fw fa-eye"></i> Show</a>
-                                                    <a class="btn btn-sm btn-success" href="{{ route('patients.edit',$patient->id) }}"><i class="fa fa-fw fa-edit"></i> Edit</a>
-                                                    @csrf
-                                                    @method('DELETE')
-                                                    <button type="submit" class="btn btn-danger btn-sm"><i class="fa fa-fw fa-trash"></i> Delete</button>
-                                                </form>
                                             </td>
                                         </tr>
                                     @endforeach
