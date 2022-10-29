@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PatientsController;
+use App\Http\Controllers\DoctorsController;
 
 
 /*
@@ -24,6 +25,13 @@ Route::get('/home', function () {
 })->middleware(['auth','verified'])->name('dashboard');
 
 
-Route::resource('patients', PatientsController::class)->except(['edit','destroy'])->middleware('role:admin','verified');
+Route::resource('patients', PatientsController::class)->except(['edit','destroy','create'])->middleware('role:admin','verified');
+
+Route::resource('doctors', DoctorsController::class)->except(['edit'])->middleware('role:admin','verified');
+
+//Route::resource('doctors', DoctorsController::class)->except(['index','destroy'])->middleware('role:doctor','verified');
 
 require __DIR__.'/auth.php';
+
+
+#create, read, update, destroy, index

@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('template_title')
-    Patient
+    Doctor
 @endsection
 
 @section('content')
@@ -13,9 +13,14 @@
                         <div style="display: flex; justify-content: space-between; align-items: center;">
 
                             <span id="card_title">
-                                {{ __('Patient') }}
+                                {{ __('Doctor') }}
                             </span>
 
+                             <div class="float-right">
+                                <a href="{{ route('doctors.create') }}" class="btn btn-primary btn-sm float-right"  data-placement="left">
+                                  {{ __('Create New') }}
+                                </a>
+                              </div>
                         </div>
                     </div>
                     @if ($message = Session::get('success'))
@@ -32,31 +37,26 @@
                                         <th>No</th>
                                         
 										<th>Email</th>
-										<th>Id Number</th>
-										<th>Healthcare Number</th>
-										<th>Birthday</th>
-										<th>Occupation</th>
-										<th>Address</th>
-										<th>Phone Number</th>
+										<th>Specialty</th>
 
                                         <th></th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    @foreach ($patients as $patient)
+                                    @foreach ($doctors as $doctor)
                                         <tr>
                                             <td>{{ ++$i }}</td>
                                             
-											<td>{{ $patient->email }}</td>
-											<td>{{ $patient->id }}</td>
-											<td>{{ $patient->healthcare_number }}</td>
-											<td>{{ $patient->birthday }}</td>
-											<td>{{ $patient->occupation }}</td>
-											<td>{{ $patient->address }}</td>
-											<td>{{ $patient->phone_number }}</td>
+											<td>{{ $doctor->email }}</td>
+											<td>{{ $doctor->specialty }}</td>
 
                                             <td>
-                                                    <a class="btn btn-sm btn-primary " href="{{ route('patients.show',$patient->id) }}"><i class="fa fa-fw fa-eye"></i> Show</a>
+                                                <form action="{{ route('doctors.destroy',$doctor->id) }}" method="POST">
+                                                    <a class="btn btn-sm btn-primary " href="{{ route('doctors.show',$doctor->id) }}"><i class="fa fa-fw fa-eye"></i> Show</a>
+                                                    @csrf
+                                                    @method('DELETE')
+                                                    <button type="submit" class="btn btn-danger btn-sm"><i class="fa fa-fw fa-trash"></i> Delete</button>
+                                                </form>
                                             </td>
                                         </tr>
                                     @endforeach
@@ -65,7 +65,7 @@
                         </div>
                     </div>
                 </div>
-                {!! $patients->links() !!}
+                {!! $doctors->links() !!}
             </div>
         </div>
     </div>

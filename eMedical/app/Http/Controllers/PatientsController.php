@@ -103,6 +103,12 @@ class PatientsController extends Controller
     {
         $patient = Patient::where('id',$id)->get()->first()->delete();
 
+        $user = User::where('email',$patient->email)->get()->first();
+
+        $patient->delete();
+
+        $user->delete();
+        #TODO delete user too
 
         return redirect()->route('patients.index')
             ->with('success', 'Patient deleted successfully');

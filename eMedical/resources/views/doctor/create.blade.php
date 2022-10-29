@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('template_title')
-    Create Patient
+    Create Doctor
 @endsection
 
 @section('content')
@@ -13,13 +13,13 @@
 
                 <div class="card card-default">
                     <div class="card-header">
-                        <span class="card-title">Create Patient</span>
+                        <span class="card-title">Create Doctor</span>
                     </div>
                     <div class="card-body">
-                        <form method="POST" action="{{ route('patients.store') }}"  role="form" enctype="multipart/form-data">
+                        <form method="POST" action="{{ route('doctors.store') }}"  role="form" enctype="multipart/form-data">
                             @csrf
 
-                            @include('patient.form')
+                            @include('doctor.form')
 
                         </form>
                     </div>
