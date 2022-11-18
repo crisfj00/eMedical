@@ -58,6 +58,16 @@ class User extends Authenticatable implements MustVerifyEmail
         return $this->role_id == 3;
     }
 
+    public function isDoctor()
+    {
+        return $this->role_id == 2;
+    }
+
+    public function isPatient()
+    {
+        return $this->role_id == 1;
+    }
+
     /*protected function isAdmin(): Attribute
     {
         return Attribute::make(

@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PatientsController;
 use App\Http\Controllers\DoctorsController;
+use App\Http\Controllers\PrescriptionsController;
 
 
 /*
@@ -24,8 +25,11 @@ Route::get('/home', function () {
     return view('dashboard');
 })->middleware(['auth','verified'])->name('dashboard');
 
+Route::post('api/fetch-doctors', [PrescriptionsController::class, 'fetchDoctors']);
 
 Route::resource('patients', PatientsController::class)->except(['edit','destroy','create'])->middleware('role:admin','verified');
+
+Route::resource('prescriptions', PrescriptionsController::class)->middleware('role:admin','verified');
 
 Route::resource('doctors', DoctorsController::class)->except(['edit'])->middleware('role:admin','verified');
 

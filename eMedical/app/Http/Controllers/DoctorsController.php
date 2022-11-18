@@ -55,8 +55,6 @@ class DoctorsController extends Controller
             'password' => ['required', 'confirmed', Rules\Password::defaults()],
         ]);
 
-        echo "hola estoy aqui";
-
         $request->validate(Doctor::$rules);
 
         $user = User::create([

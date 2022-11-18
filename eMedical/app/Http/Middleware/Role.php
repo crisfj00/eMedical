@@ -17,11 +17,11 @@ public function handle($request, Closure $next, $role)
     if($role=='admin' && $user->isAdmin())
         return $next($request);
 
-    /*foreach($roles as $role) {
-        // Check if user has the role This check will depend on how your roles are set up
-        if($user->hasRole($role))
-            return $next($request);
-    }*/
+    if($role=='doctor' && $user->isDoctor())
+    return $next($request);
+
+    if($role=='patient' && $user->isPatient())
+    return $next($request);
 
     return redirect('home');
 }
