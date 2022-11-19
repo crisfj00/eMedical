@@ -39,7 +39,7 @@
 
                         <div class="col-md-6">
 
-                            <select class="form-select @error('doctor_id') is-invalid @enderror" id="doctor_id" name="doctor_id" >
+                            <select class="form-select @error('doctor_id') is-invalid @enderror" id="doctor_id" name="doctor_id" required>
                             </select>
                         </div>
                     </div>
