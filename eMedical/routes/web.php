@@ -29,7 +29,7 @@ Route::post('api/fetch-doctors', [PrescriptionsController::class, 'fetchDoctors'
 
 Route::resource('patients', PatientsController::class)->except(['edit','destroy','create'])->middleware('role:admin','verified');
 
-Route::resource('prescriptions', PrescriptionsController::class)->middleware('role:admin','verified');
+Route::resource('prescriptions', PrescriptionsController::class)->middleware('role:patient','verified');
 
 Route::resource('doctors', DoctorsController::class)->except(['edit'])->middleware('role:admin','verified');
 

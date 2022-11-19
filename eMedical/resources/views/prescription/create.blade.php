@@ -35,17 +35,16 @@
                         </div>
 
                     <div class="row mb-3" id="div-doctor" style="display:none;">
-                        <label for="doctor" class="col-md-4 col-form-label text-md-end">{{ __('Doctor to consult') }}</label>
+                        <label for="doctor_id" class="col-md-4 col-form-label text-md-end">{{ __('Doctor to consult') }}</label>
 
                         <div class="col-md-6">
 
-                            <select class="form-select @error('doctor') is-invalid @enderror" id="doctor" name="doctor" >
+                            <select class="form-select @error('doctor_id') is-invalid @enderror" id="doctor_id" name="doctor_id" >
                             </select>
                         </div>
                     </div>
 
-
-                    <div class="row mb-3" id="div-consultation" style="display:none;">
+                    <div class="row mb-3" id="div-consultation" style="display;">
                             <label for="consultation" class="col-md-4 col-form-label text-md-end">{{ __('Consultation') }}</label>
 
                             <div class="col-md-6">
@@ -55,6 +54,14 @@
                                         <strong>{{ $message }}</strong>
                                     </span>
                                 @enderror
+                            </div>
+                        </div>
+
+                        <div class="row mb-0">
+                            <div class="col-md-6 offset-md-4">
+                                <button type="submit" class="btn btn-primary">
+                                    {{ __('Submit') }}
+                                </button>
                             </div>
                         </div>
 
@@ -71,7 +78,7 @@
 $(document).ready(function () {
             $('#specialty').on('change', function () {
                 var specialty = this.value;
-                $("#doctor").html('');
+                $("#doctor_id").html('');
                 $.ajax({
                     url: "{{url('api/fetch-doctors')}}",
                     type: "POST",
@@ -82,9 +89,9 @@ $(document).ready(function () {
                     dataType: 'json',
                     success: function (result) {
                         if(result.doctors.length>0 ){                 
-                        $('#doctor').html('<option value="">Select Doctor</option>');
+                        $('#doctor_id').html('<option value="">Select Doctor</option>');
                         $.each(result.doctors, function (key, value) {
-                            $("#doctor").append('<option value="' + value
+                            $("#doctor_id").append('<option value="' + value
                                 .id + '">'+ value.id+ " - " + value.name + '</option>');
                         });
                         $('#div-doctor').show(150);

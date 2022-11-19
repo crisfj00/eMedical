@@ -25,6 +25,14 @@
                         {{ __('Doctors') }}
                     </x-nav-link>
                     @endif
+
+                    @if(auth()->user()->isPatient() or auth()->user()->isDoctor())
+                    <x-nav-link :href="route('prescriptions.index')" :active="request()->routeIs('prescriptions.index')">
+                        {{ __('Prescriptions') }}
+                    </x-nav-link>
+                    @endif
+
+
                 </div>
             </div>
 
