@@ -39,9 +39,9 @@
 										<th>Patient Id</th>
 										<th>Doctor Id</th>
 										<th>Consultation</th>
-										<th>Diagnosis</th>
+										<th>Created</th>
+                                        <th>Responded</th>
 										<th>State</th>
-
                                         <th></th>
                                     </tr>
                                 </thead>
@@ -52,8 +52,10 @@
                                             
 											<td>{{ $prescription->patient_id }}</td>
 											<td>{{ $prescription->doctor_id }}</td>
-											<td>{{ $prescription->consultation }}</td>
-											<td>{{ $prescription->diagnosis }}</td>
+											<td>{{ \Illuminate\Support\Str::limit($prescription->consultation, 30, $end='...') }}</td>
+                                            <td>{{ $prescription->created_at }}</td>
+											<td>@if( $prescription->state ) {{ $prescription->created_at }} @else  @endif</td>
+
 											<td>@if( $prescription->state )SOLVED @else PENDING @endif</td>
 
                                             <td>
