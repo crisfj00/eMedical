@@ -106,6 +106,21 @@ class PrescriptionsController extends Controller
     {
         $prescription = Prescription::find($id);
 
+        if($prescription==null)
+            return redirect('prescriptions');
+        else{
+            if(Auth::user()->isPatient()){
+                $pat=Patient::where("email",Auth::user()->email)->get()->first();
+                if($prescription->patient_id != $pat->id)
+                return redirect('prescriptions');
+            }
+            else if(Auth::user()->isDoctor()){
+                $doc=Doctor::where("email",Auth::user()->email)->get()->first();
+                if($prescription->doctor_id != $doc->id)
+                return redirect('prescriptions');      
+            }
+        }
+
         return view('prescription.show', compact('prescription'));
     }
 
@@ -118,6 +133,21 @@ class PrescriptionsController extends Controller
     public function edit($id)
     {
         $prescription = Prescription::find($id);
+
+        if($prescription==null)
+         return redirect('prescriptions');
+        else{
+            if(Auth::user()->isPatient()){
+                $pat=Patient::where("email",Auth::user()->email)->get()->first();
+                if($prescription->patient_id != $pat->id)
+                return redirect('prescriptions');
+            }
+            else if(Auth::user()->isDoctor()){
+                $doc=Doctor::where("email",Auth::user()->email)->get()->first();
+                if($prescription->doctor_id != $doc->id)
+                return redirect('prescriptions');      
+            }
+        }
 
         return view('prescription.edit', compact('prescription'));
     }

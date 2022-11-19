@@ -88,6 +88,9 @@ class DoctorsController extends Controller
     {
         $doctor = Doctor::where('id',$id)->get()->first();
 
+        if($doctor==null)
+        return redirect('home');
+
         return view('doctor.show', compact('doctor'));
     }
 
@@ -100,6 +103,10 @@ class DoctorsController extends Controller
     public function edit($id)
     {
         $doctor = Doctor::where('id',$id)->get()->first();
+
+
+        if($doctor==null)
+        return redirect('home');
 
         return view('doctor.edit', compact('doctor'));
     }
