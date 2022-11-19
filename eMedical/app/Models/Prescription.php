@@ -28,7 +28,6 @@ class Prescription extends Model
 		'patient_id' => 'required',
 		'doctor_id' => 'required',
 		'consultation' => 'required',
-		'state' => 'required',
     ];
 
     protected $perPage = 20;

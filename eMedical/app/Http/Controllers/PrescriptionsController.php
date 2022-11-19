@@ -134,6 +134,8 @@ class PrescriptionsController extends Controller
         request()->validate(Prescription::$rules);
 
         $prescription->update($request->all());
+        $prescription->state=1;
+        $prescription->save();
 
         return redirect()->route('prescriptions.index')
             ->with('success', 'Prescription updated successfully');

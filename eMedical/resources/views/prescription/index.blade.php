@@ -59,7 +59,7 @@
                                             <td>
                                                 <form action="{{ route('prescriptions.destroy',$prescription->id) }}" method="POST">
                                                     <a class="btn btn-sm btn-primary " href="{{ route('prescriptions.show',$prescription->id) }}"><i class="fa fa-fw fa-eye"></i> Show</a>
-                                                    @if(Auth::user()->isDoctor())
+                                                    @if(Auth::user()->isDoctor() && !$prescription->state)
                                                     <a class="btn btn-sm btn-success" href="{{ route('prescriptions.edit',$prescription->id) }}"><i class="fa fa-fw fa-edit"></i> Respond</a>
                                                     @endif
                                                     @csrf

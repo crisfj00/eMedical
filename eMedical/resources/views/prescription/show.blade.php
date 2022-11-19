@@ -38,8 +38,22 @@
                         </div>
                         <div class="form-group">
                             <strong>State:</strong>
-                            {{ $prescription->state }}
+                            @if( $prescription->state )SOLVED @else PENDING @endif
                         </div>
+
+                        <div class="form-group">
+                            <strong>Created:</strong>
+                            {{ $prescription->created_at }}
+                        </div>
+
+                        @if( $prescription->state )
+
+                        <div class="form-group">
+                            <strong>Solved:</strong>
+                            {{ $prescription->updated_at }}
+                        </div>
+
+                        @endif
 
                     </div>
                 </div>
