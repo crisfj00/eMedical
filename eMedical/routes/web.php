@@ -27,7 +27,9 @@ Route::get('/home', function () {
 
 Route::post('api/fetch-doctors', [PrescriptionsController::class, 'fetchDoctors']);
 
-Route::resource('patients', PatientsController::class)->except(['edit','destroy','create'])->middleware('role:admin','verified');
+Route::resource('patients', PatientsController::class)->except(['index','create'])->middleware('role:patient','verified');
+
+Route::get('profile', [PatientsController::class,'showEmail'])->name('myprofile')->middleware('role:patient','verified');
 
 Route::resource('prescriptions', PrescriptionsController::class,[
     'only' => ['create','destroy','store']

@@ -15,8 +15,10 @@
                 <div class="p-6 bg-white border-b border-gray-200">
                     @if(auth()->user()->isAdmin())
                     You're logged in as ADMIN!
+                    @elseif(auth()->user()->isPatient())
+                    You're logged in as PATIENT!
                     @else
-                    You're logged in!
+                    You're logged in as DOCTOR!
                     @endif
                 </div>
             </div>

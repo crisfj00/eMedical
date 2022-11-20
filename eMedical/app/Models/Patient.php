@@ -3,7 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
-
+use betterapp\LaravelDbEncrypter\Traits\EncryptableDbAttribute;
 /**
  * Class Patient
  *
@@ -25,6 +25,8 @@ use Illuminate\Database\Eloquent\Model;
 class Patient extends Model
 {
 
+    use EncryptableDbAttribute;
+
     protected $primaryKey = 'email';
 
     public $incrementing = false;
@@ -39,6 +41,12 @@ class Patient extends Model
 		'occupation' => 'required',
 		'address' => 'required',
 		'phone_number' => ['required', 'string', 'min:9'],
+    ];
+
+    protected $encryptable = [
+        'address',
+        'phone_number',
+        'occupation'
     ];
 
     protected $perPage = 20;

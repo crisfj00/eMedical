@@ -3,7 +3,6 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
-
 /**
  * Class Doctor
  *
@@ -21,6 +20,7 @@ use Illuminate\Database\Eloquent\Model;
 class Doctor extends Model
 {
 
+
     protected $primaryKey = 'email';
 
     public $incrementing = false;
@@ -32,6 +32,7 @@ class Doctor extends Model
         'email' => ['required', 'string','email','unique:users'],
 		'id' => ['required', 'string', 'max:9','unique:doctors'],
     ];
+
 
     protected $perPage = 20;
 

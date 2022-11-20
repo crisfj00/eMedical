@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Patient;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 /**
  * Class PatientController
@@ -60,6 +61,22 @@ class PatientsController extends Controller
     public function show($id)
     {
         $patient = Patient::where('id',$id)->get()->first();
+
+        if($patient==null || $patient->email!=Auth::user()->email)
+        return redirect('home');
+
+        return view('patient.show', compact('patient'));
+    }
+
+        /**
+     * Display the specified resource.
+     *
+     * @param  int $id
+     * @return \Illuminate\Http\Response
+     */
+    public function showEmail()
+    {
+        $patient = Patient::where('email',Auth::user()->email)->get()->first();
 
         if($patient==null)
         return redirect('home');

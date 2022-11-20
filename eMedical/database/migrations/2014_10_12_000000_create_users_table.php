@@ -31,7 +31,7 @@ class CreateUsersTable extends Migration
         }
 
         Schema::create('users', function (Blueprint $table) {
-            $table->string('name');
+            $table->text('name');
             $table->string('email')->unique()->primary();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
@@ -44,9 +44,10 @@ class CreateUsersTable extends Migration
             'email' => 'admin@emedical.com',
             'name'  => 'eMedicalAdmin',
             'password' => Hash::make('password'),
-            'email_verified_at' => Carbon::now()->timestamp,
             'role_id' => 3
         ]);
+
+        $admin->markEmailAsVerified();
 
         Schema::create('patients', function (Blueprint $table) {
             $table->string('email')->unique();
@@ -54,9 +55,9 @@ class CreateUsersTable extends Migration
             $table->string('id',10)->unique(); #12345678Z ó Z12345678A
             $table->string('healthcare_number',10)->unique();
             $table->dateTime('birthday');
-            $table->string('occupation');
-            $table->string('address');
-            $table->string('phone_number',20);
+            $table->text('occupation');
+            $table->text('address');
+            $table->text('phone_number');
             $table->timestamps();
         });
 

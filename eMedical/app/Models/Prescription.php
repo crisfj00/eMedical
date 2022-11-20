@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use betterapp\LaravelDbEncrypter\Traits\EncryptableDbAttribute;
 
 /**
  * Class Prescription
@@ -24,10 +25,18 @@ use Illuminate\Database\Eloquent\Model;
 class Prescription extends Model
 {
     
+    use EncryptableDbAttribute;
+
+
     static $rules = [
 		'patient_id' => 'required',
 		'doctor_id' => 'required',
 		'consultation' => 'required',
+    ];
+
+    protected $encryptable = [
+        'consultation',
+        'diagnosis'
     ];
 
     protected $perPage = 20;

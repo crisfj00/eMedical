@@ -5,7 +5,7 @@
         'type' => 'project',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
-        'reference' => '2666e24d6ea630d0ed80ddb4050ab362625a0ffd',
+        'reference' => '46ec5f683596e20f51a617c5d228e3fd23082b6e',
         'name' => 'laravel/laravel',
         'dev' => true,
     ),
@@ -17,6 +17,15 @@
             'install_path' => __DIR__ . '/../asm89/stack-cors',
             'aliases' => array(),
             'reference' => '73e5b88775c64ccc0b84fb60836b30dc9d92ac4a',
+            'dev_requirement' => false,
+        ),
+        'betterapp/laravel-db-encrypter' => array(
+            'pretty_version' => 'v1.0.1',
+            'version' => '1.0.1.0',
+            'type' => 'library',
+            'install_path' => __DIR__ . '/../betterapp/laravel-db-encrypter',
+            'aliases' => array(),
+            'reference' => '46fda365c80afda988e0f0b0e30074db1b00c644',
             'dev_requirement' => false,
         ),
         'brick/math' => array(
@@ -418,7 +427,7 @@
             'type' => 'project',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),
-            'reference' => '2666e24d6ea630d0ed80ddb4050ab362625a0ffd',
+            'reference' => '46ec5f683596e20f51a617c5d228e3fd23082b6e',
             'dev_requirement' => false,
         ),
         'laravel/sail' => array(

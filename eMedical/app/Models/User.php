@@ -9,16 +9,25 @@ use Illuminate\Notifications\Notifiable;
 use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Model;
 use Laravel\Sanctum\HasApiTokens;
+use betterapp\LaravelDbEncrypter\Traits\EncryptableDbAttribute;
+
 
 class User extends Authenticatable implements MustVerifyEmail
 {
     use HasApiTokens, HasFactory, Notifiable;
+
+    use EncryptableDbAttribute;
+
 
     /**
      * The attributes that are mass assignable.
      *
      * @var array<int, string>
      */
+
+    protected $encryptable = [
+        'name'
+    ];
 
     protected $primaryKey = 'email';
 
