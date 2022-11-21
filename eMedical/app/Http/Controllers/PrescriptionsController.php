@@ -10,6 +10,7 @@ use Illuminate\Support\Facades\Auth;
 
 
 use Illuminate\Http\Request;
+use PDF;
 
 /**
  * Class PrescriptionController
@@ -31,6 +32,24 @@ class PrescriptionsController extends Controller
         //$data['doctors'] = Doctor::select('doctors.*')->join('users', 'users.email', '=', 'doctors.email')->where('doctor.specialty', $request->specialty)->get(["doctors.id, users.name"]);
 
         return response()->json($data);
+    }
+
+    public function downloadPDF($id)
+    {
+
+        $pat=Patient::where('email',Auth::user()->email)->get()->first();
+    
+        $prescription = Prescription::where('id',$id)->where('patient_id',$pat->id)->get()->first();
+
+        if($prescription!=null){
+  
+            $pdf = PDF::loadView('prescription.pdf', compact('prescription') );
+            return $pdf->download('prescription.pdf');
+        }
+
+        else
+            return redirect()->route('prescriptions.index');
+
     }
 
 

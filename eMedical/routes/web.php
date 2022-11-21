@@ -45,6 +45,7 @@ Route::group(['middleware' => ['role:doctor,patient']], function () {
     ]);
 });
 
+Route::get('/download/{id}', [PrescriptionsController::class,'downloadPDF'])->name('prescriptions.download')->middleware('role:patient','verified');
 
 Route::resource('doctors', DoctorsController::class)->except(['edit'])->middleware('role:admin','verified');
 

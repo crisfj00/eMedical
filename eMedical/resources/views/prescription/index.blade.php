@@ -63,9 +63,11 @@
                                                     <a class="btn btn-sm btn-primary " href="{{ route('prescriptions.show',$prescription->id) }}"><i class="fa fa-fw fa-eye"></i> Show</a>
                                                     @if(Auth::user()->isDoctor() && !$prescription->state)
                                                     <a class="btn btn-sm btn-success" href="{{ route('prescriptions.edit',$prescription->id) }}"><i class="fa fa-fw fa-edit"></i> Respond</a>
+                                                    
                                                     @endif
                                                     @csrf
                                                     @if(Auth::user()->isPatient())
+                                                    @if($prescription->state)<a class="btn btn-sm btn-success" href="{{ route('prescriptions.download',$prescription->id) }}"><i class="fa fa-fw fa-edit"></i> Download</a>@endif
                                                     @method('DELETE')
                                                     <button type="submit" class="btn btn-danger btn-sm"><i class="fa fa-fw fa-trash"></i> Delete</button>
                                                     @endif
