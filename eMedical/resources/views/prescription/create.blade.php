@@ -92,7 +92,7 @@ $(document).ready(function () {
                         $('#doctor_id').html('<option value="">Select Doctor</option>');
                         $.each(result.doctors, function (key, value) {
                             $("#doctor_id").append('<option value="' + value
-                                .id + '">'+ value.id+ " - " + value.name + '</option>');
+                                .id + '">'+ value.id+ " - " + value['name'] + '</option>');
                         });
                         $('#div-doctor').show(150);
                         }
