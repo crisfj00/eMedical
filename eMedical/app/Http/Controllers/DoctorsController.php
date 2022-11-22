@@ -74,6 +74,8 @@ class DoctorsController extends Controller
         event(new Registered($user));
         event(new Registered($doctor));
 
+        User::sendWelcomeEmail($user);
+
         return redirect()->route('doctors.index')
             ->with('success', 'Doctor created successfully.');
     }

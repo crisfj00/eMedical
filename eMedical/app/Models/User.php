@@ -83,4 +83,16 @@ class User extends Authenticatable implements MustVerifyEmail
             get: fn () => $this->role_id == 3,
         );
     }*/
+
+    public static function sendWelcomeEmail($user)
+    {
+        $token = app('auth.password.broker')->createToken($user);
+      
+      // Send email
+        Mail::send('auth.reset-password', ['user' => $user, 'token' => $token], function ($m) use ($user) {
+            $m->from('support@emedical.com', 'eMedical');
+
+            $m->to($user->email, $user->name)->subject('Welcome to APP');
+        });
+    }
 }
