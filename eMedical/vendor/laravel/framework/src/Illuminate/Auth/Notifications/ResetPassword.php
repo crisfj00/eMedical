@@ -75,11 +75,11 @@ class ResetPassword extends Notification
     protected function buildMailMessage($url)
     {
         return (new MailMessage)
-            ->subject(Lang::get('Reset Password Notification'))
-            ->line(Lang::get('You are receiving this email because we received a password reset request for your account.'))
-            ->action(Lang::get('Reset Password'), $url)
-            ->line(Lang::get('This password reset link will expire in :count minutes.', ['count' => config('auth.passwords.'.config('auth.defaults.passwords').'.expire')]))
-            ->line(Lang::get('If you did not request a password reset, no further action is required.'));
+            ->subject(Lang::get('Welcome to eMedical'))
+            ->line(Lang::get('You are receiving this email because we registered your account in our service.'))
+            ->action(Lang::get('Log In'), $url)
+            ->line(Lang::get('This link will expire in :count hours.', ['count' => config('auth.passwords.'.config('auth.defaults.passwords').'.expire')/60]))
+            ->line(Lang::get('If you did not replied on time, please contact us back on support@emedical.com.'));
     }
 
     /**

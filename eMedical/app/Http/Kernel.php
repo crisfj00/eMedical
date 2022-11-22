@@ -74,26 +74,13 @@ class Kernel extends HttpKernel
     protected function schedule(Schedule $schedule)
     {
         $schedule->call(function () {
-            /*$from = Carbon::now()->subHours(1);
-            $to = Carbon::now();
-            $unverified_users=User::where('role_id',1)->whereNull('email_verified_at')->whereNotBetween('created_at', [$from, $to]);
-            foreach($unverified_users as $user){
-                $pat=Patient::where('email',$user->email)->get()->first()->delete();
-                $user->delete();
-            }*/
+
             $users=User::whereNull('email_verified_at')->get();
             foreach($users as $user)
                 $pat=Patient::where('email',$user->email)->delete();
 
-                $users=User::whereNull('email_verified_at')->delete();
+            $users=User::whereNull('email_verified_at')->delete();
+        })->daily();
 
-            info('eccomi');
-
-        })->everyMinute();
-
-        $schedule->call(function(){
-            info('eccomi');
-
-        })->everyMinute();
     }
 }
