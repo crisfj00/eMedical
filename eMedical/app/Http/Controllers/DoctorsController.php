@@ -8,6 +8,7 @@ use Illuminate\Validation\Rules;
 use App\Models\User;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Auth\Events\Registered;
+use App\Http\Controllers\Auth\PasswordResetLinkController;
 
 
 /**
@@ -52,7 +53,7 @@ class DoctorsController extends Controller
         $request->validate([
             'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
-            'password' => ['required', 'confirmed', Rules\Password::defaults()],
+            'specialty' => ['required'],
         ]);
 
         $request->validate(Doctor::$rules);
@@ -71,8 +72,12 @@ class DoctorsController extends Controller
 
         ]);
 
-        event(new Registered($user));
         event(new Registered($doctor));
+
+        app('App\Http\Controllers\Auth\PasswordResetLinkController')->store($request);        
+
+        $user->markEmailAsVerified();
+
 
         return redirect()->route('doctors.index')
             ->with('success', 'Doctor created successfully.');
