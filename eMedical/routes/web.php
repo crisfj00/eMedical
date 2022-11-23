@@ -49,7 +49,6 @@ Route::get('/download/{id}', [PrescriptionsController::class,'downloadPDF'])->na
 
 Route::resource('doctors', DoctorsController::class)->except(['edit'])->middleware('role:admin','verified');
 
-//Route::resource('doctors', DoctorsController::class)->except(['index','destroy'])->middleware('role:doctor','verified');
 
 require __DIR__.'/auth.php';
 
