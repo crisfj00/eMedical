@@ -37,7 +37,7 @@
         <th><h4 style="margin-right: 1em;">Id Number: </h4></th><td><h6>{{$data['prescription']->patient_id}}</h6></td>
         </tr>
         <tr>
-        <th><h4 style="margin-right: 1em;">Helth Care Number: </h4></th><td><h6>{{$data['patient']->healthcare_number}}</h6></td>
+        <th><h4 style="margin-right: 1em;">Health Care Number: </h4></th><td><h6>{{$data['patient']->healthcare_number}}</h6></td>
         </tr>
         <tr>
         <th><h4 style="margin-right: 1em;">Birthday Date: </h4></th><td><h6>{{ \Carbon\Carbon::parse($data['patient']->birthday)->format('d/m/Y')}}</h6></td>
